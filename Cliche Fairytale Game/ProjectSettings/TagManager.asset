@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hazard
   - Enemy
+  - Fairy Range
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Fairies
   - Player
   - Hazards and Enemies
   - 
