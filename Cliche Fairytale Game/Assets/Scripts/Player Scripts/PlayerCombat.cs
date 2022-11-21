@@ -44,6 +44,7 @@ public class PlayerCombat : MonoBehaviour
         else if (downStrikeActive)
         {
             attackPos = attackPoint3;
+            Attack();
         }
 
         //check if downstrike is finished
@@ -81,13 +82,7 @@ public class PlayerCombat : MonoBehaviour
                         anim.SetTrigger("Attack 2");
                         attackAnimation = false;
                     }
-
-                    //damage enemies
-                    Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemyLayer);
-                    for (int i = 0; i < enemiesToDamage.Length; i++)
-                    {
-                        enemiesToDamage[i].GetComponent<EnemyHealth>().currentHealth -= damage;
-                    }
+                    Attack();
                     timeBtwAttack = startTimeBtwAttack;
                 }
             }
@@ -100,5 +95,19 @@ public class PlayerCombat : MonoBehaviour
     {
         Gizmos.color = Color.gray;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
+    private void Attack()
+    {
+        //damage enemies
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemyLayer);
+        for (int i = 0; i < enemiesToDamage.Length; i++)
+        {
+            enemiesToDamage[i].GetComponent<EnemyHealth>().currentHealth -= damage;
+            if (enemiesToDamage[i].GetComponent<Lever>() is not null)
+            {
+                enemiesToDamage[i].GetComponent<Lever>().Flick();
+            }
+        }
     }
 }

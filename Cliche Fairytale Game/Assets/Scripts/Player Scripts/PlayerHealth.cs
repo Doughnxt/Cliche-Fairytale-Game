@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] GameObject healthThing_3;
 
     private SpriteRenderer sprite;
+    private Animator anim;
+    private PlayerMovement player;
 
     private int currentHealth;
     private int maxHealth = 3;
@@ -19,6 +21,8 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        player = GetComponent<PlayerMovement>();
         currentHealth = maxHealth;
         Physics2D.IgnoreLayerCollision(15, 16, false);
     }
@@ -26,16 +30,24 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Hazard") || collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             UpdateHealth();
+        }
+        else if (collision.gameObject.CompareTag("Hazard"))
+        {
+            Die();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Hazard") || collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             UpdateHealth();
+        }
+        else if (collision.gameObject.CompareTag("Hazard"))
+        {
+            Die();
         }
     }
     private IEnumerator Invunerability()
@@ -76,7 +88,17 @@ public class PlayerHealth : MonoBehaviour
         }
         else if (currentHealth == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Die();
         }
+    }
+    private void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void Die()
+    {
+        player.movementEnabled = false;
+        anim.SetTrigger("Death");
     }
 }

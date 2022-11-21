@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Blue_Fairy
+  m_Controller: {fileID: 9100000, guid: 374c7f4dcb10e16479a0b8560552a1f7, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: c05c6ad81aada6641bf35a8e57e8902f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: eae7af48e49e998469a622f5a61fbac4, type: 2}

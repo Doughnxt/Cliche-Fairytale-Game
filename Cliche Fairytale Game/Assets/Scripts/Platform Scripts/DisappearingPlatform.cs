@@ -8,15 +8,14 @@ public class DisappearingPlatform : MonoBehaviour
     [SerializeField] private float standingTime = 1f;
     [SerializeField] private bool automatic = false;
 
-    private SpriteRenderer sprite;
     private BoxCollider2D box;
+    private Animator anim;
 
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
         box = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
 
-        sprite.enabled = true;
         box.enabled = true;
     }
 
@@ -34,16 +33,19 @@ public class DisappearingPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(MagicTrick());
+            if (!automatic)
+            {
+                StartCoroutine(MagicTrick());
+            }
         }
     }
 
     private IEnumerator MagicTrick()
     {
-        sprite.enabled = false;
+        anim.SetTrigger("Disappear");
         box.enabled = false;
         yield return new WaitForSeconds(disappearingTime);
-        sprite.enabled = true;
+        anim.SetTrigger("Reappear");
         box.enabled = true;
     }
 

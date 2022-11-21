@@ -9,12 +9,19 @@ public class BouncyPlatform : MonoBehaviour
     [SerializeField] private bool right = true;
     [SerializeField] private float bounceTime = 1f;
     private GameObject player;
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             player = collision.gameObject;
+            animator.SetTrigger("Bounce");
 
             //sideways bounce
             if (!vertical)
@@ -41,7 +48,10 @@ public class BouncyPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(StopBounce());
+            if (!vertical)
+            {
+                StartCoroutine(StopBounce());
+            }
         }
     }
 

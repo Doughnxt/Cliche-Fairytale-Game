@@ -24,10 +24,10 @@ TagManager:
   - 
   - Fairies
   - Player
-  - Hazards and Enemies
-  - 
+  - Enemies and Damagable Objects
+  - Hazards
   - Ground
-  - 
+  - Fairy Gate
   - 
   - 
   - 
@@ -41,6 +41,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3476726347
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2770046197
+    locked: 0
+  - name: Vines
+    uniqueID: 1119655475
     locked: 0

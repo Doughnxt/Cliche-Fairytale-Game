@@ -6,10 +6,13 @@ public class SwitchPlatform : MonoBehaviour
 {
     private BoxCollider2D box;
     private SpriteRenderer sprite;
-    private Color32 activatedColor = new Color32(105, 167, 190, 255);
-    private Color32 deactivatedColor = new Color32(138, 125, 137, 255);
     [SerializeField] private bool defaultOn;
     [SerializeField] private float switchTimer = 2f;
+    [SerializeField] private Sprite redOnSprite;
+    [SerializeField] private Sprite redOffSprite;
+    [SerializeField] private Sprite blueOnSprite;
+    [SerializeField] private Sprite blueOffSprite;
+
     private bool active;
     private bool platformOn;
     private bool switchingEnabled;
@@ -23,10 +26,12 @@ public class SwitchPlatform : MonoBehaviour
         if (defaultOn)
         {
             active = true;
+            sprite.sprite = blueOnSprite;
         }
         else if (!defaultOn)
         {
             active = false;
+            sprite.sprite = redOffSprite;
         }
     }
 
@@ -40,13 +45,12 @@ public class SwitchPlatform : MonoBehaviour
         if (active)
         {
             box.enabled = true;
-            sprite.color = activatedColor;
 
         }
         else if (!active)
         {
             box.enabled = false;
-            sprite.color = deactivatedColor;
+
 
         }
 
@@ -55,10 +59,12 @@ public class SwitchPlatform : MonoBehaviour
             if (platformOn)
             {
                 active = true;
+                sprite.sprite = blueOnSprite;
             }
             else if (!platformOn)
             {
                 active = false;
+                sprite.sprite = blueOffSprite;
             }
         }
 
@@ -67,10 +73,12 @@ public class SwitchPlatform : MonoBehaviour
             if (platformOn)
             {
                 active = false;
+                sprite.sprite = redOffSprite;
             }
             else if (!platformOn)
             {
                 active = true;
+                sprite.sprite = redOnSprite;
             }
         }
     }

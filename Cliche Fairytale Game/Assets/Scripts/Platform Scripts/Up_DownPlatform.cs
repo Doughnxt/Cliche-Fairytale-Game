@@ -13,8 +13,13 @@ public class Up_DownPlatform : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private BoxCollider2D box;
+    private Animator animator;
     private bool activated;
     private bool reset;
+
+    private static readonly int Directional_Disappear = Animator.StringToHash("Directional_Disappear");
+    private static readonly int Directional_Reappear = Animator.StringToHash("Directional_Reappear");
+    private static readonly int Default_Directional = Animator.StringToHash("Default_Directional");
 
 
 
@@ -23,9 +28,12 @@ public class Up_DownPlatform : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         box = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
+
 
         sprite.enabled = true;
         box.enabled = true;
+        animator.CrossFade(Default_Directional, 0, 0);
     }
     private void FixedUpdate()
     {
@@ -37,7 +45,7 @@ public class Up_DownPlatform : MonoBehaviour
         if (reset)
         {
             activated = false;
-            sprite.enabled = true;
+            animator.CrossFade(Directional_Reappear, 0, 0);
             box.enabled = true;
             reset = false;
         }
@@ -70,17 +78,23 @@ public class Up_DownPlatform : MonoBehaviour
 
         if (transform.position == destination.position)
         {
-            StartCoroutine(StopAtDestination());
+            StartCoroutine(Disappear());
         }
     }
     private IEnumerator StopAtDestination()
     {
-        yield return new WaitForSeconds(waitTime);
-        sprite.enabled = false;
-        box.enabled = false;
-        yield return new WaitForSeconds(1f);
         transform.position = startPos.position;
         yield return new WaitForSeconds(1f);
         reset = true;
     }
+
+    private IEnumerator Disappear()
+    {
+        yield return new WaitForSeconds(waitTime);
+        animator.CrossFade(Directional_Disappear, 0, 0);
+        box.enabled = false;
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(StopAtDestination());
+    }
+
 }

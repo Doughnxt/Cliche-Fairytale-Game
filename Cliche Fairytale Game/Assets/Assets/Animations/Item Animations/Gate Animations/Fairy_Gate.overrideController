@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fairy_Gate
+  m_Controller: {fileID: 9100000, guid: e1ead5291ecdcc7439c9e7e871d14d35, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0c6e3a97a02c2714c90520ac1c846acb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 871f37a76280fe34b8ed56b0baee383e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 193a6ff46afad4f4ebce44c09d5914ea, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0334a801bc5c2f24facd1787a73e4bd8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 74185798dae10dd44a0b2a26a40af7e9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 871f37a76280fe34b8ed56b0baee383e, type: 2}

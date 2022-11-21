@@ -5,6 +5,29 @@ using UnityEngine;
 public class OnOffSwitch : MonoBehaviour
 {
     public static bool isOn;
+    [SerializeField] private Sprite on;
+    [SerializeField] private Sprite off;
+
+    private SpriteRenderer sprite;
+
+    private void Start()
+    {
+        isOn = true;
+        sprite = GetComponent<SpriteRenderer>();
+        sprite.sprite = on;
+    }
+
+    private void Update()
+    {
+        if (isOn)
+        {
+            sprite.sprite = on;
+        }
+        else if (!isOn)
+        {
+            sprite.sprite = off;
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -5,11 +5,12 @@ using UnityEngine;
 public class OnOffPlatform : MonoBehaviour
 {
     [SerializeField] private bool defaultOn;
+    [SerializeField] private Sprite onSprite;
+    [SerializeField] private Sprite offSprite;
     private bool active;
     private BoxCollider2D box;
     private SpriteRenderer sprite;
-    private Color32 onColor = new Color32(105, 178, 128, 255);
-    private Color32 offColor = new Color32(80, 80, 80, 255);
+
 
     private void Start()
     {
@@ -31,13 +32,13 @@ public class OnOffPlatform : MonoBehaviour
         if (active)
         {
             box.enabled = true;
-            sprite.color = onColor;
+            sprite.sprite = onSprite;
 
         }
         else if (!active)
         {
             box.enabled = false;
-            sprite.color = offColor;
+            sprite.sprite = offSprite;
 
         }
 
