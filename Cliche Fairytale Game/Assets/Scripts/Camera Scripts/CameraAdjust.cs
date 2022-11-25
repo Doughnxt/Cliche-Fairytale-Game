@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class CameraAdjust : MonoBehaviour
 {
-    [SerializeField] private CameraController _camera;
+    private CameraController _camera;
     [SerializeField] private float yMax;
     [SerializeField] private float yMin;
     [SerializeField] private float xMax;
     [SerializeField] private float xMin;
 
+    private void Start()
+    {
+        _camera = GameObject.Find("Main Camera").GetComponent<CameraController>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

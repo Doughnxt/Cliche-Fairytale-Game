@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
     private BoxCollider2D box;
     private SpriteRenderer sprite;
     private Animator animator;
+    public bool dead;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
 
+        dead = false;
         box.enabled = true;
         currentHealth = maxHealth;
         previousHealthValue = currentHealth;
@@ -33,6 +35,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             box.enabled = false;
+            dead = true;
         }
     }
 

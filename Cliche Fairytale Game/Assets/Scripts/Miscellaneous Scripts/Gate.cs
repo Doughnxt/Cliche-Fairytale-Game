@@ -72,7 +72,7 @@ public class Gate : MonoBehaviour
         {
             if (range.inRange)
             {
-                if (Input.GetButtonDown("Open"))
+                if (Input.GetButtonDown("Interact"))
                 {
                     if (keyCounter.keyCount > 0)
                     {

@@ -7,6 +7,7 @@ public class Key : MonoBehaviour
     private CircleCollider2D circle;
     private SpriteRenderer sprite;
     private KeyCounter keyCounter;
+    [SerializeField] private GameObject keyLight;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class Key : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            keyLight.SetActive(false);
             circle.enabled = false;
             sprite.enabled = false;
             keyCounter.keyCount++;

@@ -7,9 +7,9 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] float iFramesDuration = 2;
     [SerializeField] float numberOfFlashes = 8;
-    [SerializeField] GameObject healthThing_1;
-    [SerializeField] GameObject healthThing_2;
-    [SerializeField] GameObject healthThing_3;
+    private GameObject healthThing_1;
+    private GameObject healthThing_2;
+    private GameObject healthThing_3;
 
     private SpriteRenderer sprite;
     private Animator anim;
@@ -25,6 +25,10 @@ public class PlayerHealth : MonoBehaviour
         player = GetComponent<PlayerMovement>();
         currentHealth = maxHealth;
         Physics2D.IgnoreLayerCollision(15, 16, false);
+
+        healthThing_1 = GameObject.Find("Health Point 1");
+        healthThing_2 = GameObject.Find("Health Point 2");
+        healthThing_3 = GameObject.Find("Health Point 3");
     }
 
 

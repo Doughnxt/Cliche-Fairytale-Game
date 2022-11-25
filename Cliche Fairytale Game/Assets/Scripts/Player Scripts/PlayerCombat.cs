@@ -103,7 +103,11 @@ public class PlayerCombat : MonoBehaviour
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemyLayer);
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
-            enemiesToDamage[i].GetComponent<EnemyHealth>().currentHealth -= damage;
+            if (enemiesToDamage[i].GetComponent<EnemyHealth>() != null)
+            {
+                enemiesToDamage[i].GetComponent<EnemyHealth>().currentHealth -= damage;
+            }
+            
             if (enemiesToDamage[i].GetComponent<Lever>() is not null)
             {
                 enemiesToDamage[i].GetComponent<Lever>().Flick();
