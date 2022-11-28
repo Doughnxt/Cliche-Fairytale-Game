@@ -15,7 +15,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private Transform attackPos;
     [SerializeField] private float attackRange;
     [SerializeField] private LayerMask enemyLayer;
-    [SerializeField] private int damage = 1;
+    [SerializeField] private int damage = 3;
     private bool downStrikeActive;
 
     private bool attackAnimation;

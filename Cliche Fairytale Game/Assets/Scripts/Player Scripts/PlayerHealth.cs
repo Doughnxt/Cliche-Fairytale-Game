@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     private Animator anim;
     private PlayerMovement player;
 
-    private int currentHealth;
+    public int currentHealth;
     private int maxHealth = 3;
 
     void Start()

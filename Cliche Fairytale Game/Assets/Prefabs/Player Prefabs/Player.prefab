@@ -258,9 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iFramesDuration: 2
   numberOfFlashes: 8
-  healthThing_1: {fileID: 0}
-  healthThing_2: {fileID: 0}
-  healthThing_3: {fileID: 0}
+  currentHealth: 0
 --- !u!114 &5854267375572638164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +276,7 @@ MonoBehaviour:
   attackPoint2: {fileID: 5854267375260240311}
   attackPoint3: {fileID: 5854267376824064333}
   attackPos: {fileID: 5854267375260240311}
-  attackRange: 0.36
+  attackRange: 0.72
   enemyLayer:
     serializedVersion: 2
     m_Bits: 65536

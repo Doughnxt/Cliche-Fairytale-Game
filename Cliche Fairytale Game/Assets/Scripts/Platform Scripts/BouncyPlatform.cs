@@ -7,7 +7,7 @@ public class BouncyPlatform : MonoBehaviour
     [SerializeField] private float bouncePower = 20f;
     [SerializeField] private bool vertical = true;
     [SerializeField] private bool right = true;
-    [SerializeField] private float bounceTime = 1f;
+    [SerializeField] private float bounceTime = 1.4f;
     private GameObject player;
     private Animator animator;
 
@@ -50,6 +50,7 @@ public class BouncyPlatform : MonoBehaviour
         {
             if (!vertical)
             {
+                collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0.5f;
                 StartCoroutine(StopBounce());
             }
         }
@@ -59,6 +60,7 @@ public class BouncyPlatform : MonoBehaviour
     {
         yield return new WaitForSeconds(bounceTime);
         player.GetComponent<PlayerMovement>().movementEnabled = true;
+        player.GetComponent<Rigidbody2D>().gravityScale = 1;
     }
 
 }

@@ -31,6 +31,10 @@ public class FairyGate : MonoBehaviour
                 StartCoroutine(OpenGate());
             }
         }
+        else
+        {
+            return;
+        }
     }
 
     private IEnumerator OpenGate()
