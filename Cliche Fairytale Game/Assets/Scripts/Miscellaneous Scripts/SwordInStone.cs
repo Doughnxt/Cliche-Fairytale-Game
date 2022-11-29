@@ -13,6 +13,8 @@ public class SwordInStone : MonoBehaviour
     private Vector2 endPosition = new Vector2(-17.44f, 12f);
 
     [SerializeField] private GameObject swordGlow;
+    [SerializeField] private GameObject tutorialText;
+    [SerializeField] private GameObject tutorialText2;
 
     private void Start()
     {
@@ -43,9 +45,11 @@ public class SwordInStone : MonoBehaviour
     {
         player.GetComponent<SpriteRenderer>().enabled = false;
         anim.SetTrigger("Pull");
+        tutorialText2.SetActive(false);
         player.GetComponent<Transform>().position = endPosition;
         yield return new WaitForSeconds(animationTime);
         sprite.enabled = false;
+        tutorialText.SetActive(true);
         player.GetComponent<PlayerCombat>().enabled = true;
         player.GetComponent<SpriteRenderer>().enabled = true;
         player.GetComponent<PlayerMovement>().movementEnabled = true;

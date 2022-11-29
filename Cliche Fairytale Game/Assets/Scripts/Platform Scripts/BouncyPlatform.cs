@@ -8,6 +8,7 @@ public class BouncyPlatform : MonoBehaviour
     [SerializeField] private bool vertical = true;
     [SerializeField] private bool right = true;
     [SerializeField] private float bounceTime = 1.4f;
+    [SerializeField] private AudioSource bounceSound;
     private GameObject player;
     private Animator animator;
 
@@ -48,6 +49,7 @@ public class BouncyPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            bounceSound.Play();
             if (!vertical)
             {
                 collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0.5f;

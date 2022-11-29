@@ -10,6 +10,9 @@ public class Up_DownPlatform : MonoBehaviour
     [SerializeField] private Transform destination;
     [SerializeField] private Transform startPos;
 
+    [SerializeField] private AudioSource disappearingSound;
+    [SerializeField] private AudioSource reappearingSound;
+
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private BoxCollider2D box;
@@ -96,5 +99,16 @@ public class Up_DownPlatform : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(StopAtDestination());
     }
+
+    private void PlayDisappearingSound()
+    {
+        disappearingSound.Play();
+    }
+
+    private void PlayReappearingSound()
+    {
+        reappearingSound.Play();
+    }
+
 
 }

@@ -10,6 +10,7 @@ public class FairyGate : MonoBehaviour
     private bool opened;
     [SerializeField] private int fairiesNeededToOpen = 1;
     [SerializeField] private GameObject gateLight;
+    [SerializeField] private AudioSource gateSound;
 
     private void Start()
     {
@@ -39,6 +40,7 @@ public class FairyGate : MonoBehaviour
 
     private IEnumerator OpenGate()
     {
+        gateSound.Play();
         opened = true;
         gateLight.SetActive(false);
         animator.SetTrigger("Open");

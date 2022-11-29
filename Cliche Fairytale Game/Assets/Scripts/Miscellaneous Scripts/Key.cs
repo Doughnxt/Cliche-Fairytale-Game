@@ -8,6 +8,7 @@ public class Key : MonoBehaviour
     private SpriteRenderer sprite;
     private KeyCounter keyCounter;
     [SerializeField] private GameObject keyLight;
+    [SerializeField] private AudioSource keySound;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class Key : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            keySound.Play();
             keyLight.SetActive(false);
             circle.enabled = false;
             sprite.enabled = false;

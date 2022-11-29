@@ -18,6 +18,18 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private int damage = 3;
     private bool downStrikeActive;
 
+    private GameObject slashEffect1;
+    private GameObject slashEffect2;
+
+    [SerializeField] private GameObject slashEffect_right_1;
+    [SerializeField] private GameObject slashEffect_right_2;
+    [SerializeField] private GameObject slashEffect_left_1;
+    [SerializeField] private GameObject slashEffect_left_2;
+
+    [SerializeField] private AudioSource damageSound;
+    [SerializeField] private AudioSource attackSound1;
+    [SerializeField] private AudioSource attackSound2;
+
     private bool attackAnimation;
     private Animator anim;
 
@@ -36,10 +48,14 @@ public class PlayerCombat : MonoBehaviour
         if (player.movementEnabled && player.flipped == true)
         {
             attackPos = attackPoint1;
+            slashEffect1 = slashEffect_left_1;
+            slashEffect2 = slashEffect_left_2;
         }
         else if (player.movementEnabled && player.flipped == false)
         {
             attackPos = attackPoint2;
+            slashEffect1 = slashEffect_right_1;
+            slashEffect2 = slashEffect_right_2;
         }
         else if (downStrikeActive)
         {
@@ -74,11 +90,13 @@ public class PlayerCombat : MonoBehaviour
                     //play animation
                     if (attackAnimation == false)
                     {
+                        attackSound1.Play();
                         anim.SetTrigger("Attack 1");
                         attackAnimation = true;
                     }
                     else if (attackAnimation == true)
                     {
+                        attackSound2.Play();
                         anim.SetTrigger("Attack 2");
                         attackAnimation = false;
                     }
@@ -106,12 +124,23 @@ public class PlayerCombat : MonoBehaviour
             if (enemiesToDamage[i].GetComponent<EnemyHealth>() != null)
             {
                 enemiesToDamage[i].GetComponent<EnemyHealth>().currentHealth -= damage;
+                damageSound.Play();
             }
-            
+
             if (enemiesToDamage[i].GetComponent<Lever>() is not null)
             {
                 enemiesToDamage[i].GetComponent<Lever>().Flick();
             }
         }
+    }
+
+    private void PlaySlashEffect1()
+    {
+        slashEffect1.GetComponent<Animator>().SetTrigger("Slash 1");
+    }
+
+    private void PlaySlashEffect2()
+    {
+        slashEffect2.GetComponent<Animator>().SetTrigger("Slash 2");
     }
 }

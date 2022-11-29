@@ -7,6 +7,7 @@ public class OnOffSwitch : MonoBehaviour
     public static bool isOn;
     [SerializeField] private Sprite on;
     [SerializeField] private Sprite off;
+    [SerializeField] private AudioSource sound;
 
     private SpriteRenderer sprite;
 
@@ -33,6 +34,7 @@ public class OnOffSwitch : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            sound.Play();
             if (isOn)
             {
                 isOn = false;

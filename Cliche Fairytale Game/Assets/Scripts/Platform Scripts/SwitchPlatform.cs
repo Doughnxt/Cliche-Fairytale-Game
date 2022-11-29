@@ -12,6 +12,9 @@ public class SwitchPlatform : MonoBehaviour
     [SerializeField] private Sprite redOffSprite;
     [SerializeField] private Sprite blueOnSprite;
     [SerializeField] private Sprite blueOffSprite;
+    [SerializeField] private AudioSource switchSound;
+    [SerializeField] private RangeCheck range;
+
 
     private bool active;
     private bool platformOn;
@@ -37,6 +40,15 @@ public class SwitchPlatform : MonoBehaviour
 
     private void Update()
     {
+        if (range.inRange)
+        {
+            switchSound.volume = .3f;
+        }
+        else
+        {
+            switchSound.volume = 0;
+        }
+
         if (switchingEnabled)
         {
             StartCoroutine(SwitchState());
@@ -85,9 +97,11 @@ public class SwitchPlatform : MonoBehaviour
 
     private IEnumerator SwitchState()
     {
+        switchSound.Play();
         switchingEnabled = false;
         platformOn = true;
         yield return new WaitForSeconds(switchTimer);
+        switchSound.Play();
         platformOn = false;
         yield return new WaitForSeconds(switchTimer);
         switchingEnabled = true;

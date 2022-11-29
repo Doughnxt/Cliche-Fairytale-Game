@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
 
+    //sound variables
+    [SerializeField] private AudioSource walkingSound;
+    private bool playingSound;
+
 
     //enums
     private enum MovementState { idle, running, jumping, falling }
@@ -67,6 +71,19 @@ public class PlayerMovement : MonoBehaviour
 
             if (direction > 0f)
             {
+                if (IsGrounded())
+                {
+                    if (!playingSound)
+                    {
+                        walkingSound.Play();
+                        playingSound = true;
+                    }
+                }
+                else
+                {
+                    playingSound = false;
+                    walkingSound.Stop();
+                }
                 rb.velocity = new Vector2(direction * speed, rb.velocity.y);
                 state = MovementState.running;
                 sprite.flipX = false;
@@ -74,6 +91,19 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (direction < 0f)
             {
+                if (IsGrounded())
+                {
+                    if (!playingSound)
+                    {
+                        walkingSound.Play();
+                        playingSound = true;
+                    }
+                }
+                else
+                {
+                    playingSound = false;
+                    walkingSound.Stop();
+                }
                 rb.velocity = new Vector2(direction * speed, rb.velocity.y);
                 state = MovementState.running;
                 sprite.flipX = true;
@@ -81,6 +111,8 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                playingSound = false;
+                walkingSound.Stop();
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 state = MovementState.idle;
             }

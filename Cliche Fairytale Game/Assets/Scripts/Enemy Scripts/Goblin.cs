@@ -11,6 +11,7 @@ public class Goblin : MonoBehaviour
     private EnemyHealth health;
 
     [SerializeField] private float speed = 2f;
+    [SerializeField] private AudioSource yell;
     Vector2 posLastFrame;
     Vector2 posThisFrame;
     private SpriteRenderer sprite;
@@ -42,10 +43,12 @@ public class Goblin : MonoBehaviour
         {
             anim.SetBool("Attacking", true);
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            yell.Play();
         }
         else
         {
             anim.SetBool("Attacking", false);
+            yell.Pause();
         }
 
         posLastFrame = posThisFrame;

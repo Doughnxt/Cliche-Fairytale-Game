@@ -6,6 +6,7 @@ public class FallingSpike : MonoBehaviour
 {
     [SerializeField] private float raycastDistance = 3f;
     [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private AudioSource breakingSound;
 
     private Rigidbody2D rb;
     private BoxCollider2D box;
@@ -67,6 +68,7 @@ public class FallingSpike : MonoBehaviour
     private IEnumerator ReturnToStart()
     {
         box.enabled = false;
+        breakingSound.Play();
         anim.SetTrigger("Broken");
         rb.gravityScale = 0;
         yield return new WaitForSeconds(1f);

@@ -7,6 +7,7 @@ public class Fairy : MonoBehaviour
     [SerializeField] private RangeCheck range;
     [SerializeField] private float stoppingDistance = 1f;
     [SerializeField] private float speed = 3f;
+    [SerializeField] private AudioSource fairySounds;
     Vector2 posLastFrame;
     Vector2 posThisFrame;
     private Transform player;
@@ -18,6 +19,7 @@ public class Fairy : MonoBehaviour
 
     private void Start()
     {
+        fairySounds.Play();
         sprite = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Physics2D.IgnoreLayerCollision(14, 15, true);
@@ -42,8 +44,13 @@ public class Fairy : MonoBehaviour
         }
 
         if (range.inRange)
-        {
+        { 
             followPlayer = true;
+            fairySounds.volume = .5f;
+        }
+        else
+        {
+            fairySounds.volume = 0;
         }
 
         if (followPlayer)

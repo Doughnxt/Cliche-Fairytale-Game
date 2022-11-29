@@ -8,6 +8,9 @@ public class DisappearingPlatform : MonoBehaviour
     [SerializeField] private float standingTime = 1f;
     [SerializeField] private bool automatic = false;
 
+    [SerializeField] AudioSource disappreaingSound;
+    [SerializeField] AudioSource reappearingSound;
+
     private BoxCollider2D box;
     private Animator anim;
 
@@ -42,9 +45,11 @@ public class DisappearingPlatform : MonoBehaviour
 
     private IEnumerator MagicTrick()
     {
+        disappreaingSound.Play();
         anim.SetTrigger("Disappear");
         box.enabled = false;
         yield return new WaitForSeconds(disappearingTime);
+        reappearingSound.Play();
         anim.SetTrigger("Reappear");
         box.enabled = true;
     }

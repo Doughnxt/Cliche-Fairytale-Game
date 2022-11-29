@@ -12,6 +12,7 @@ public class Gate : MonoBehaviour
     [SerializeField] private Lever lever;
     [SerializeField] private Switch switch_;
     [SerializeField] private bool opened;
+    [SerializeField] private AudioSource gateAudio;
 
     private enum TypeOfGate { key, switch_, lever }
 
@@ -20,15 +21,6 @@ public class Gate : MonoBehaviour
         keyCounter = FindObjectOfType<KeyCounter>();
         box = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
-
-        if (opened)
-        {
-            Open();
-        }
-        else
-        {
-            Close();
-        }
     }
 
     void Update()
@@ -54,6 +46,7 @@ public class Gate : MonoBehaviour
 
     private void Open()
     {
+        gateAudio.Play();
         box.enabled = false;
         animator.SetTrigger("Open");
         opened = true;
@@ -61,6 +54,7 @@ public class Gate : MonoBehaviour
 
     private void Close()
     {
+        gateAudio.Play();
         box.enabled = true;
         animator.SetTrigger("Close");
         opened = false;

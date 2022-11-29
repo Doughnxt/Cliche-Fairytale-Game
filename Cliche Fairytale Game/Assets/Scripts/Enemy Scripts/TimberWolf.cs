@@ -11,8 +11,6 @@ public class TimberWolf : MonoBehaviour
     [SerializeField] private Transform destination;
     [SerializeField] private Transform startPos;
 
-    [SerializeField] private GameObject eyeGlow;
-
     private EnemyHealth health;
     private SpriteRenderer sprite;
     private BoxCollider2D box;
@@ -79,7 +77,6 @@ public class TimberWolf : MonoBehaviour
         if (health.dead)
         {
             animator.CrossFade(Death, 0, 0);
-            eyeGlow.SetActive(false);
         }
     }
 

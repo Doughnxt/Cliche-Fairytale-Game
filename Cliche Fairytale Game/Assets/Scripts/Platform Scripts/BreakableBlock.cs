@@ -10,6 +10,7 @@ public class BreakableBlock : MonoBehaviour
     private bool notDestroyed;
     [SerializeField] private Sprite slightlyBroken;
     [SerializeField] private Sprite veryBroken;
+    [SerializeField] private AudioSource breakingSound;
 
     private void Start()
     {
@@ -36,6 +37,7 @@ public class BreakableBlock : MonoBehaviour
                 {
                     notDestroyed = false;
                     anim.SetTrigger("Break");
+                    breakingSound.Play();
                 }
                 break;
 

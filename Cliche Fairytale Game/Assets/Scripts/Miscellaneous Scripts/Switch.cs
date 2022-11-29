@@ -6,6 +6,7 @@ public class Switch : MonoBehaviour
 {
     [SerializeField] private Sprite onSprite;
     [SerializeField] private Sprite offSprite;
+    [SerializeField] private AudioSource switchSound;
     private SpriteRenderer sprite;
     public bool on;
 
@@ -18,6 +19,7 @@ public class Switch : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        switchSound.Play();
         if (on)
         {
             on = false;

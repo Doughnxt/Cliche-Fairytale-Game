@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Test Scene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/Forest_Room_1.unity
+    guid: 68bdcd044cb63994d97f3fc67576ec49
+  - enabled: 1
+    path: Assets/Scenes/Forest_Room_2.unity
+    guid: 43058b5dce801dd47bc2b8816b42a7b4
+  - enabled: 1
+    path: Assets/Scenes/Forest_Room_3.unity
+    guid: 25aa98b3f02b659409d87ef8de316336
+  - enabled: 1
+    path: Assets/Scenes/Forest_Room_4.unity
+    guid: 4a1770d61a154194b8bf18dcd4d8c5a3
+  - enabled: 1
+    path: Assets/Scenes/Forest_Room_5.unity
+    guid: 558db6e85ce2c14409905f2564cae14c
+  - enabled: 1
+    path: Assets/Scenes/Tower_Room_1.unity
+    guid: 765a598a5c8da4043a0a353d96f507be
   m_configObjects: {}
