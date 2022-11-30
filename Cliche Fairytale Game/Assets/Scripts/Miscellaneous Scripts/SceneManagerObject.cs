@@ -23,6 +23,6 @@ public class SceneManagerObject : MonoBehaviour
 
     public void LoadFirstScene()
     {
-        //load first scene
+        transition.LoadFirstScene();
     }
 }

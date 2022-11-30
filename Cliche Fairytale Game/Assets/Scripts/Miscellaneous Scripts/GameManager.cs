@@ -6,15 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
+    public AudioSource music;
+    public AudioSource ambience;
 
-    public AudioSource forestBackgroiundMusic;
-    public AudioSource forestAmbience;
-
-    private bool canPlayForestSounds;
-    private bool soundsPlaying;
+    private bool musicPlaying;
 
     private void Awake()
     {
+
         if (instance == null)
         {
             instance = this;
@@ -25,16 +24,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (SceneManager.GetActiveScene().buildIndex < 5 || SceneManager.GetActiveScene().buildIndex > 0)
+        if (!musicPlaying)
         {
-            canPlayForestSounds = true;
-        }
-
-        if (canPlayForestSounds && !soundsPlaying)
-        {
-            forestAmbience.Play();
-            forestBackgroiundMusic.Play();
-            soundsPlaying = true;
+            music.Play();
+            ambience.Play();
+            musicPlaying = true;
         }
     }
 }

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Title_Screen.unity
+    guid: 983b847ef5582e645ab05f0b35169a44
+  - enabled: 1
     path: Assets/Scenes/Forest_Room_1.unity
     guid: 68bdcd044cb63994d97f3fc67576ec49
   - enabled: 1
@@ -23,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tower_Room_1.unity
     guid: 765a598a5c8da4043a0a353d96f507be
+  - enabled: 1
+    path: Assets/Scenes/End_Screen.unity
+    guid: de643e7fa28e3074f80671c73b9da97f
+  - enabled: 1
+    path: Assets/Scenes/Final_Scene_Credits.unity
+    guid: d6aa909a1e75c5446916df5afde5d3a4
   m_configObjects: {}
