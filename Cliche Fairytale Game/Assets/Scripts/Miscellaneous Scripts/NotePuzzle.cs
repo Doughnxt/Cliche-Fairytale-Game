@@ -13,6 +13,9 @@ public class NotePuzzle : MonoBehaviour
     private void Start()
     {
         objectToDropOnSwitch.SetActive(false);
+        noteCount = 0;
+        currentNoteValue = 0;
+        correctOrderInput = false;
     }
 
     private void Update()

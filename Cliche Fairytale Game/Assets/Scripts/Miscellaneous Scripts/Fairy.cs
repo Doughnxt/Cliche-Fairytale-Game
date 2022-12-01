@@ -11,14 +11,23 @@ public class Fairy : MonoBehaviour
     Vector2 posLastFrame;
     Vector2 posThisFrame;
     private Transform player;
-    private bool followPlayer;
+    public bool followPlayer;
     private SpriteRenderer sprite;
+    public bool collected;
+    public bool startsByPlayer;
+    private Vector3 playerPos;
 
     enum Direction { Right, Left, Still };
     private Direction direction;
 
     private void Start()
     {
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        if (startsByPlayer)
+        {
+            transform.position = playerPos;
+        }
+
         fairySounds.Play();
         sprite = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -44,7 +53,8 @@ public class Fairy : MonoBehaviour
         }
 
         if (range.inRange)
-        { 
+        {
+            collected = true;
             followPlayer = true;
             fairySounds.volume = .5f;
         }
