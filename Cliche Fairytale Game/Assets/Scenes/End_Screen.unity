@@ -6644,7 +6644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2011202181579429985, guid: b8a1705ea70a65e4aaa973e7df6e1f2c, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2011202181579429985, guid: b8a1705ea70a65e4aaa973e7df6e1f2c, type: 3}
       propertyPath: m_audioClip
@@ -6739,6 +6739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragonHeath: {fileID: 782115736}
+  player: {fileID: 1908689032}
+  isQuill: 1
 --- !u!4 &1828213553
 Transform:
   m_ObjectHideFlags: 0

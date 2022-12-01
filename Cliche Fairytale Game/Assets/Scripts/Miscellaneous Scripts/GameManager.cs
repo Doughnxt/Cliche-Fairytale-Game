@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-    public AudioSource music;
-    public AudioSource ambience;
-
-    private bool musicPlaying;
+    public static float totalGameTime;
+    public static bool secret1Found;
+    public static int deathCount;
+    public static bool timerGoing;
+    public static int secretCount;
 
     private void Awake()
     {
-
         if (instance == null)
         {
             instance = this;
@@ -23,12 +23,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
-        if (!musicPlaying)
+    private void Update()
+    {
+        if (Time.timeScale > 0 && timerGoing)
         {
-            music.Play();
-            ambience.Play();
-            musicPlaying = true;
+            totalGameTime += Time.deltaTime;
+        }
+        if (secret1Found)
+        {
+            secretCount = 1;
         }
     }
 }

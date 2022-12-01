@@ -5,6 +5,7 @@ using UnityEngine;
 public class LoadStartScreenAgain : MonoBehaviour
 {
     private SceneManagerObject sceneManager;
+    [SerializeField] private GameObject statsCanvas;
 
     private void OnEnable()
     {
@@ -13,5 +14,11 @@ public class LoadStartScreenAgain : MonoBehaviour
     public void LoadStartScreen()
     {
         sceneManager.LoadFirstScene();
+    }
+
+    public void EnableStatsCanvas()
+    {
+        statsCanvas.SetActive(true);
+        Cursor.visible = true;
     }
 }

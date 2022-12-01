@@ -31,6 +31,11 @@ public class StartButton : MonoBehaviour
 
     public void StartButtonPress()
     {
+        GameManager.deathCount = 0;
+        GameManager.secret1Found = false;
+        GameManager.secretCount = 0;
+        GameManager.totalGameTime = 0;
+        GameManager.timerGoing = true;
         anim.SetTrigger("Open");
         button.SetActive(false);
         titleText.SetActive(false);

@@ -23,7 +23,7 @@ public class Heart : MonoBehaviour
     private IEnumerator Disappear()
     {
         sound.Play();
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
         this.gameObject.SetActive(false);
     }
 }

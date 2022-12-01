@@ -16,18 +16,21 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
     private PlayerMovement player;
+    private Rigidbody2D rb;
 
     public int currentHealth;
     private int maxHealth = 3;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         player = GetComponent<PlayerMovement>();
         currentHealth = maxHealth;
         Physics2D.IgnoreLayerCollision(15, 16, false);
 
+        rb.bodyType = RigidbodyType2D.Dynamic;
         healthThing_1 = GameObject.Find("Health Point 1");
         healthThing_2 = GameObject.Find("Health Point 2");
         healthThing_3 = GameObject.Find("Health Point 3");
@@ -103,8 +106,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        rb.bodyType = RigidbodyType2D.Static;
         player.movementEnabled = false;
         anim.SetTrigger("Death");
+        GameManager.deathCount++;
     }
 
     private void ReloadCurrentScene()
